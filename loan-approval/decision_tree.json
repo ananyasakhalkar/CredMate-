@@ -1,0 +1,50 @@
+{
+    "question": "How can I help you with your loan application?",
+    "options": {
+        "I want to apply for a loan": {
+            "question": "What is your employment type?",
+            "options": {
+                "Salaried": {
+                    "question": "What is your monthly income?",
+                    "action": "Call Loan Eligibility API"
+                },
+                "Self-Employed": {
+                    "question": "Do you have business proof (ITR, GST filings)?",
+                    "conditions": {
+                        "Yes": "Proceed to Required Documents",
+                        "No": "Show rejection reason"
+                    }
+                }
+            }
+        },
+        "Loan Eligibility & Decisioning": {
+            "question": "Do you want to check if you are eligible for a loan?",
+            "action": "Call Loan Eligibility API"
+        },
+        "Loan Terms & Repayment": {
+            "question": "Do you want details on loan terms and repayment?",
+            "options": {
+                "Interest Rates": {"answer": "We offer fixed and floating rates based on your profile."},
+                "EMI Calculation": {"answer": "Use our EMI calculator to estimate your monthly payments."},
+                "Loan Repayment": {
+                    "question": "Do you want to set up auto-debit for EMI payments?",
+                    "options": {
+                        "Yes": "Register auto-pay",
+                        "No": "Explain manual payment methods"
+                    },
+                    "next": {
+                        "question": "Can I prepay my loan early?",
+                        "conditions": {
+                            "Allowed": "Explain prepayment process",
+                            "Penalty": "Explain charges"
+                        }
+                    }
+                }
+            }
+        },
+        "Loan FAQs": {
+            "question": "Choose a topic you need help with:",
+            "options": {}
+        }
+    }
+}
